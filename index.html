@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,7 +11,19 @@
             href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
             rel="stylesheet"
         />
-        <link href="dist/output.css" rel="stylesheet" />
+        <link href="dist/css/output.css" rel="stylesheet" />
+        <script>
+            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+            if (
+                localStorage.theme === "dark" ||
+                (!("theme" in localStorage) &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        </script>
     </head>
     <body>
         <!-- Header Start -->
@@ -45,51 +57,75 @@
                             ></span>
                         </button>
                         <nav
-                            class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
+                            class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-dark dark:shadow-zinc-800 lg:dark:bg-transparent"
                             id="nav-menu"
                         >
                             <ul class="block lg:flex">
                                 <li class="group mb-2.5 lg:mb-0">
                                     <a
                                         href="#home"
-                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary"
+                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white"
                                         >Beranda</a
                                     >
                                 </li>
                                 <li class="group mb-2.5 lg:mb-0">
                                     <a
                                         href="#about"
-                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary"
+                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white"
                                         >About</a
                                     >
                                 </li>
                                 <li class="group mb-2.5 lg:mb-0">
                                     <a
                                         href="#portfolio"
-                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary"
+                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white"
                                         >Portfolio</a
                                     >
                                 </li>
                                 <li class="group mb-2.5 lg:mb-0">
                                     <a
                                         href="#clients"
-                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary"
+                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white"
                                         >Clients</a
                                     >
                                 </li>
                                 <li class="group mb-2.5 lg:mb-0">
                                     <a
                                         href="#blog"
-                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary"
+                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white"
                                         >Blog</a
                                     >
                                 </li>
-                                <li class="group">
+                                <li class="group mb-3 lg:mb-0">
                                     <a
                                         href="#contact"
-                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary"
+                                        class="text-base text-dark py-2 mx-8 group-hover:text-primary dark:text-white"
                                         >Contact</a
                                     >
+                                </li>
+                                <li class="flex items-center pl-8">
+                                    <div class="flex">
+                                        <span class="mr-2 text-sm text-zinc-500"
+                                            >Light</span
+                                        >
+                                        <input
+                                            type="checkbox"
+                                            class="hidden"
+                                            id="dark-toggle"
+                                        />
+                                        <label for="dark-toggle">
+                                            <div
+                                                class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-zinc-500 p-1"
+                                            >
+                                                <div
+                                                    class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"
+                                                ></div>
+                                            </div>
+                                        </label>
+                                        <span class="ml-2 text-sm text-zinc-500"
+                                            >Dark</span
+                                        >
+                                    </div>
                                 </li>
                             </ul>
                         </nav>
@@ -98,7 +134,7 @@
             </div>
         </header>
         <!-- Hero Section Start-->
-        <section id="home" class="pt-36">
+        <section id="home" class="pt-36 dark:bg-dark">
             <div class="container">
                 <div class="flex flex-wrap">
                     <div class="w-full self-center px-4 lg:w-1/2">
@@ -107,24 +143,24 @@
                         >
                             Halo Semua ✋, Saya
                             <span
-                                class="block font-bold text-dark text-4xl mt-1 lg:text-5xl"
+                                class="block font-bold text-dark text-4xl mt-1 lg:text-5xl dark:text-white"
                                 >Bagus Perdana Yusuf</span
                             >
                         </h1>
                         <h2
-                            class="font-medium text-zinc-600 text-lg mb-5 lg:text-2xl mt-2.5"
+                            class="font-medium text-zinc-600 text-lg mb-5 lg:text-2xl mt-2.5 dark:text-zinc-200"
                         >
                             Junior Web Developer
                         </h2>
                         <p
-                            class="font-medium text-zinc-500 mb-10 leading-relaxed"
+                            class="font-medium text-zinc-500 mb-10 leading-relaxed dark:text-zinc-200"
                         >
                             Saya Lulusan dari Universitas Komputer Indonesia
                             Jurusan Teknik Informatika
                         </p>
 
                         <a
-                            href=""
+                            href="#contact"
                             class="font-medium text-white bg-primary py-3 px-8 rounded-lg hover:bg-opacity-90 transition duration-300 ease-in-out"
                             >Hubungi Saya</a
                         >
@@ -143,7 +179,7 @@
         </section>
         <!-- Hero Section End-->
         <!-- About Section Start -->
-        <section id="about" class="pt-36 pb-32 mb">
+        <section id="about" class="pt-36 pb-32 mb dark:bg-dark">
             <div class="container">
                 <div class="flex flex-wrap">
                     <div class="w-full px-4 mb-10 lg:w-1/2">
@@ -153,12 +189,12 @@
                             Tentang Saya
                         </h4>
                         <h2
-                            class="font-bold text-dark text-3xl mb-4 max-w-md lg:text-4xl"
+                            class="font-bold text-dark text-3xl mb-4 max-w-md lg:text-4xl dark:text-white"
                         >
                             Junior Web Developer
                         </h2>
                         <p
-                            class="font-medium text-base text-zinc-500 max-w-xl lg:text-lg"
+                            class="font-medium text-base text-zinc-500 max-w-xl lg:text-lg dark:text-zinc-400"
                         >
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Soluta, doloremque.
@@ -166,12 +202,12 @@
                     </div>
                     <div class="w-full px-4 lg:w-1/2">
                         <h3
-                            class="font-semibold text-dark text-2xl mb-4 lg:text-3xl lg:pt-10"
+                            class="font-semibold text-dark text-2xl mb-4 lg:text-3xl lg:pt-10 dark:text-white"
                         >
                             Kenal Lebih Dekat
                         </h3>
                         <p
-                            class="font-medium text-base text-zinc-500 max-w-xl mb-6 lg:text-lg"
+                            class="font-medium text-base text-zinc-500 max-w-xl mb-6 lg:text-lg dark:text-zinc-400"
                         >
                             Lorem ipsum dolor, sit amet consectetur adipisicing
                             elit. Adipisci quasi amet doloribus at voluptates
@@ -181,7 +217,7 @@
                             <a
                                 href="https://github.com/bagusperdanay7"
                                 target="_blank"
-                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-zinc-300 hover:border-primary hover:bg-primary hover:text-white"
+                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-zinc-300 hover:border-primary hover:bg-primary hover:text-white dark:text-zinc-400"
                             >
                                 <svg
                                     role="img"
@@ -199,7 +235,7 @@
                             <a
                                 href="https://www.instagram.com/bagusper.dana/"
                                 target="_blank"
-                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-zinc-300 hover:border-primary hover:bg-primary hover:text-white"
+                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-zinc-300 hover:border-primary hover:bg-primary hover:text-white dark:text-zinc-400"
                             >
                                 <svg
                                     role="img"
@@ -217,7 +253,7 @@
                             <a
                                 href="https://www.linkedin.com/in/bagus-perdana-yusuf"
                                 target="_blank"
-                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-zinc-300 hover:border-primary hover:bg-primary hover:text-white"
+                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-zinc-300 hover:border-primary hover:bg-primary hover:text-white dark:text-zinc-400"
                             >
                                 <svg
                                     role="img"
@@ -240,7 +276,10 @@
         <!-- About Section End -->
 
         <!-- Portfolio Section Start -->
-        <section id="portfolio" class="pt-36 pb-16 bg-zinc-100">
+        <section
+            id="portfolio"
+            class="pt-36 pb-16 bg-zinc-100 dark:bg-zinc-800"
+        >
             <div class="container">
                 <div class="w-full px-4">
                     <div class="max-w-xl mx-auto text-center mb-16">
@@ -248,11 +287,13 @@
                             Portfolio
                         </h4>
                         <h2
-                            class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl"
+                            class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white"
                         >
                             Project Terbaru
                         </h2>
-                        <p class="font-medium text-md text-zinc-500 md:text-lg">
+                        <p
+                            class="font-medium text-md text-zinc-500 md:text-lg dark:text-zinc-400"
+                        >
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit. Facere, molestiae quos! Quidem voluptates vel
                             id repudiandae deserunt quam magnam.
@@ -271,10 +312,14 @@
                                 class="w-full"
                             />
                         </div>
-                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3">
+                        <h3
+                            class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white"
+                        >
                             Landing Page Travello
                         </h3>
-                        <p class="font-medium text-base text-zinc-500">
+                        <p
+                            class="font-medium text-base text-zinc-500 dark:text-zinc-400"
+                        >
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Minus, autem.
                         </p>
@@ -287,10 +332,14 @@
                                 class="w-full"
                             />
                         </div>
-                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3">
+                        <h3
+                            class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white"
+                        >
                             Tribute Page
                         </h3>
-                        <p class="font-medium text-base text-zinc-500">
+                        <p
+                            class="font-medium text-base text-zinc-500 dark:text-zinc-400"
+                        >
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Minus, autem.
                         </p>
@@ -303,10 +352,14 @@
                                 class="w-full"
                             />
                         </div>
-                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3">
+                        <h3
+                            class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white"
+                        >
                             Survey Form
                         </h3>
-                        <p class="font-medium text-base text-zinc-500">
+                        <p
+                            class="font-medium text-base text-zinc-500 dark:text-zinc-400"
+                        >
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Minus, autem.
                         </p>
@@ -317,19 +370,23 @@
         <!-- Portfolio Section End -->
 
         <!-- Client Section Start -->
-        <section id="clients" class="pt-36 pb-32 bg-zinc-800">
+        <section id="clients" class="pt-36 pb-32 bg-zinc-800 dark:bg-zinc-400">
             <div class="container">
                 <div class="w-full px-4">
                     <div class="mx-auto text-center mb-16">
-                        <h4 class="font-semibold text-lg text-indigo-300 mb-2">
+                        <h4
+                            class="font-semibold text-lg text-indigo-300 mb-2 dark:text-primary"
+                        >
                             Clients
                         </h4>
                         <h2
-                            class="font-bold text-white text-3xl mb-4 capitalize sm:text-4xl lg:text-5xl"
+                            class="font-bold text-white text-3xl mb-4 capitalize sm:text-4xl lg:text-5xl dark:text-dark"
                         >
                             Yang pernah bekerjasama
                         </h2>
-                        <p class="font-medium text-md text-zinc-300 md:text-lg">
+                        <p
+                            class="font-medium text-md text-zinc-300 md:text-lg dark:text-zinc-800"
+                        >
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit. Facere, molestiae quos! Quidem voluptates vel
                             id repudiandae deserunt quam magnam explicabo.
@@ -363,7 +420,7 @@
         <!-- Client Section End -->
 
         <!-- Blog Section Start -->
-        <section id="blog" class="pt-36 pb-32 bg-zinc-100">
+        <section id="blog" class="pt-36 pb-32 bg-zinc-100 dark:bg-zinc-800">
             <div class="container">
                 <div class="w-full px-4">
                     <div class="max-w-xl mx-auto text-center mb-16">
@@ -371,11 +428,13 @@
                             Blog
                         </h4>
                         <h2
-                            class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl"
+                            class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white"
                         >
                             Tulisan Terkini
                         </h2>
-                        <p class="font-medium text-md text-zinc-500 md:text-lg">
+                        <p
+                            class="font-medium text-md text-zinc-500 md:text-lg dark:text-zinc-300"
+                        >
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit. Facere, molestiae quos! Quidem voluptates vel
                             id repudiandae deserunt quam magnam.
@@ -386,7 +445,7 @@
                 <div class="flex flex-wrap">
                     <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                         <div
-                            class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                            class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 dark:bg-dark"
                         >
                             <img
                                 src="https://source.unsplash.com/360x200?programming"
@@ -397,12 +456,12 @@
                                 <h3>
                                     <a
                                         href="#"
-                                        class="block mb-3 font-semibold font-xl text-dark hover:text-primary truncate"
+                                        class="block mb-3 font-semibold font-xl text-dark hover:text-primary truncate dark:text-white dark:hover:text-indigo-300"
                                         >Tips belajar Programming</a
                                     >
                                 </h3>
                                 <p
-                                    class="font-medium text-base text-zinc-500 mb-4"
+                                    class="font-medium text-base text-zinc-500 mb-4 dark:text-zinc-300"
                                 >
                                     Lorem ipsum dolor sit amet consectetur
                                     adipisicing elit. Magni, ratione.
@@ -417,7 +476,7 @@
                     </div>
                     <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                         <div
-                            class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                            class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 dark:bg-dark"
                         >
                             <img
                                 src="https://source.unsplash.com/360x200?machine+learning"
@@ -428,12 +487,12 @@
                                 <h3>
                                     <a
                                         href="#"
-                                        class="block mb-3 font-semibold font-xl text-dark hover:text-primary truncate"
+                                        class="block mb-3 font-semibold font-xl text-dark hover:text-primary truncate dark:text-white dark:hover:text-indigo-300"
                                         >Machine Learning</a
                                     >
                                 </h3>
                                 <p
-                                    class="font-medium text-base text-zinc-500 mb-4"
+                                    class="font-medium text-base text-zinc-500 mb-4 dark:text-zinc-300"
                                 >
                                     Lorem ipsum dolor sit amet consectetur
                                     adipisicing elit. Iure, ad ab.
@@ -448,7 +507,7 @@
                     </div>
                     <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                         <div
-                            class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                            class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 dark:bg-dark"
                         >
                             <img
                                 src="https://source.unsplash.com/360x200?user+interface"
@@ -459,12 +518,12 @@
                                 <h3>
                                     <a
                                         href="#"
-                                        class="block mb-3 font-semibold font-xl text-dark hover:text-primary truncate"
+                                        class="block mb-3 font-semibold font-xl text-dark hover:text-primary truncate dark:text-white dark:hover:text-indigo-300"
                                         >User Interface</a
                                     >
                                 </h3>
                                 <p
-                                    class="font-medium text-base text-zinc-500 mb-4"
+                                    class="font-medium text-base text-zinc-500 mb-4 dark:text-zinc-300"
                                 >
                                     Lorem ipsum dolor sit amet consectetur,
                                     adipisicing elit. Incidunt magni reiciendis
@@ -484,7 +543,7 @@
         <!-- Blog Section End -->
 
         <!-- Contact Section Start -->
-        <section id="contact" class="pt-36 pb-32">
+        <section id="contact" class="pt-36 pb-32 dark:bg-dark">
             <div class="container">
                 <div class="w-full px-4">
                     <div class="max-w-xl mx-auto text-center mb-16">
@@ -492,11 +551,13 @@
                             Contact
                         </h4>
                         <h2
-                            class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl"
+                            class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white"
                         >
                             Hubungi Saya
                         </h2>
-                        <p class="font-medium text-md text-zinc-500 md:text-lg">
+                        <p
+                            class="font-medium text-md text-zinc-500 md:text-lg dark:text-zinc-300"
+                        >
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Nulla, doloremque!
                         </p>
@@ -508,37 +569,37 @@
                         <div class="w-full px-4 mb-8">
                             <label
                                 for="name"
-                                class="text-base font-bold text-primary"
+                                class="text-base font-bold text-primary dark:text-indigo-300"
                                 >Nama</label
                             >
                             <input
                                 type="text"
                                 id="name"
-                                class="mt-2 w-full bg-zinc-100 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"
+                                class="mt-2 w-full bg-zinc-100 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary dark:bg-zinc-800 dark:text-white dark:focus:ring-indigo-300 dark:focus:border-indigo-300"
                             />
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label
                                 for="email"
-                                class="text-base font-bold text-primary"
+                                class="text-base font-bold text-primary dark:text-indigo-300"
                                 >Email</label
                             >
                             <input
                                 type="email"
                                 id="email"
-                                class="mt-2 w-full bg-zinc-100 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"
+                                class="mt-2 w-full bg-zinc-100 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary dark:bg-zinc-800 dark:text-white dark:focus:ring-indigo-300 dark:focus:border-indigo-300"
                             />
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label
                                 for="message"
-                                class="text-base font-bold text-primary"
+                                class="text-base font-bold text-primary dark:text-indigo-300"
                                 >Pesan</label
                             >
                             <textarea
                                 id="message"
                                 rows="5"
-                                class="mt-2 w-full bg-zinc-100 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"
+                                class="mt-2 w-full bg-zinc-100 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary dark:bg-zinc-800 dark:text-white dark:focus:ring-indigo-300 dark:focus:border-indigo-300"
                             ></textarea>
                         </div>
 
@@ -718,6 +779,18 @@
             </div>
         </footer>
         <!-- Footer End -->
+
+        <!-- Back to top start -->
+        <a
+            href="#home"
+            class="h-12 w-12 bg-primary hidden items-center justify-center rounded-full fixed z-[9999] bottom-4 right-4 p-4 hover:animate-pulse"
+            id="to-top"
+        >
+            <span
+                class="block h-4 w-4 border-t-2 border-l-2 rotate-45 mt-2"
+            ></span
+        ></a>
+        <!-- Back to top End -->
 
         <script src="dist/js/script.js"></script>
     </body>
